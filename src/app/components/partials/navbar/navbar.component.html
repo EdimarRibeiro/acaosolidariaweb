@@ -1,0 +1,38 @@
+<mat-toolbar color="primary" class="mat-elevation-z3">
+
+  <button mat-button routerLink="/">
+    <mat-icon>home</mat-icon> 
+    {{env.app_name}}
+  </button>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <div *ngIf="usuario" fxShow="false" fxShow.gt-sm>Oi {{usuario.nome}}!</div>
+
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <div *ngIf="usuario">
+        <button *ngFor="let link of nav_links_usuario" class="nav-button" mat-button routerLink="{{link.route}}">{{link.name}}</button>
+      <button class="nav-button" mat-button (click)="onLogout()">Sair</button>
+    </div>
+    <div *ngIf="!usuario">
+      <button *ngFor="let link of nav_links_no_usuario" class="nav-button" mat-button routerLink="{{link.route}}">{{link.name}}</button>
+    </div>
+
+  </div>
+  <button mat-button [mat-menu-trigger-for]="rootMenu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+
+</mat-toolbar>
+<mat-menu yPosition="below" #rootMenu="matMenu" [overlapTrigger]="false">
+  <div *ngIf="usuario">
+    <h3 class="nav-menu-item" style="padding: 15px;">Oi {{usuario.nome}}!</h3>
+    <button *ngFor="let link of nav_links_usuario" class="nav-menu-item" mat-menu-item routerLink="{{link.route}}">{{link.name}}</button>
+    <mat-divider></mat-divider>
+    <button class="nav-menu-item" mat-menu-item (click)="onLogout()">Sair</button>
+  </div>
+
+  <div *ngIf="!usuario">
+    <button *ngFor="let link of nav_links_no_usuario" class="nav-menu-item" mat-menu-item routerLink="{{link.route}}">{{link.name}}</button>
+  </div>
+</mat-menu>

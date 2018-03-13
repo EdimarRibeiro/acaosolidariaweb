@@ -1,0 +1,30 @@
+<div ngClass.lt-md="mt-50" ngClass.gt-sm="mt-100" fxLayout="row" fxLayoutAlign="center">
+  <mat-card ngClass.lt-sm="width-300" ngClass.gt-sm="width-500">
+
+    <div fxLayout="row" fxLayoutAlign="center" class="mat-display-1">{{title}}</div>
+    <div *ngIf="register===true" fxLayout="row" fxLayoutAlign="center"><a (click)="onTryLogin()">Click&nbsp;</a>para Logar.</div>
+    <form (ngSubmit)="onSubmit()"  [formGroup]="loginForm">
+
+      <mat-form-field class="full-width">
+        <input formControlName="unique" [(ngModel)]="usuario_info.unique" matInput placeholder="Email" name="unique" [autofocus]="true">
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+        <mat-error>{{getInputErrorMessage('unique')}}</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width">
+        <input formControlName="senha" type="password" matInput [(ngModel)]="usuario_info.senha" placeholder="Senha" name="senha">
+        <mat-error>{{getInputErrorMessage('senha')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="register===true" class="full-width">
+        <input formControlName="confirmsenha" type="password" matInput [(ngModel)]="usuario_info.confirm_senha" placeholder="Confirma Senha" name="confirmsenha">
+        <mat-error>{{getInputErrorMessage('confirmsenha')}}</mat-error>
+      </mat-form-field>
+
+      <div fxLayout="row" fxLayoutAlign="center center" >
+        <button mat-raised-button [disabled]="!loginForm.valid">Logar</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

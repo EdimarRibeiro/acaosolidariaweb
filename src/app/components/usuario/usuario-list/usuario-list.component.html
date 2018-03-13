@@ -1,0 +1,22 @@
+<div ngClass.lt-md="mt-50" ngClass.gt-sm="mt-100" fxLayout="row" fxLayoutAlign="center">
+  <mat-card ngClass.lt-md="width-300" ngClass.gt-sm="width-500">
+
+    <div class="center center mat-subheading-1" *ngIf="usuarios.length <= 0 || !usuarios">
+      Não localizado Usuários!
+      <!-- <a routerLink="/usuario/create" >Nova Entidade</a> !-->
+    </div>
+
+    <div class="center center mat-subheading-1" *ngIf="usuarios.length > 0">
+      <div>Selecione o Usuário para alterar</div>
+      <div *ngFor="let usuario of usuarios">
+        <br>
+        <button class="center " mat-raised-button (click)="usuario.to('update')">{{usuario.nome}} - {{usuario.email}}</button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="end">
+        <a mat-button routerLink="/usuario/create" >Novo Usuário</a>
+      </div>
+    </div>
+
+  </mat-card>
+</div>

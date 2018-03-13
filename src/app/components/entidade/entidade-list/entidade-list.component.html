@@ -1,0 +1,22 @@
+<div ngClass.lt-md="mt-50" ngClass.gt-sm="mt-100" fxLayout="row" fxLayoutAlign="center">
+  <mat-card ngClass.lt-md="width-300" ngClass.gt-sm="width-500">
+
+    <div class="center center mat-subheading-1" *ngIf="entidades.length <= 0 || !entidades">
+      Não localizado Entidades!
+      <!-- <a routerLink="/entidade/create" >Nova Entidade</a> !-->
+    </div>
+
+    <div class="center center mat-subheading-1" *ngIf="entidades.length > 0">
+      <div>Selecione a Entidade para alterar</div>
+      <div *ngFor="let entidade of entidades">
+        <br>
+        <button class="center " mat-raised-button (click)="entidade.to('update')">{{entidade.nome}}</button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="end">
+        <!--<a mat-button routerLink="/entidade/create" >Nova Entidade</a>-->
+      </div>
+    </div>
+
+  </mat-card>
+</div>
