@@ -25,9 +25,14 @@ export class FooterComponent implements OnInit {
   // this is all hard coded data. can be pulled from a db/usuario specific
   footer_links: Array<FooterLinks> = [
     {
-      header: 'Informações',
+      header: 'Menu',
       links: [
-        {name: 'Inicio', route: 'home'},
+        {name: 'Ação Solidária', route: 'home'},
+        ]
+    },
+    {
+      header: 'Entrar',
+      links: [
         {name: 'Logar', route: 'login'}
         ]
     }/*,

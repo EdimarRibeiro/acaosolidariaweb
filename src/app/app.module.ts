@@ -32,6 +32,9 @@ import { ProfileComponent } from './components/usuario/profile/profile.component
 import { EntidadeCreateComponent } from './components/entidade/entidade-create/entidade-create.component';
 import { EntidadeListComponent } from './components/entidade/entidade-list/entidade-list.component';
 import { EntidadeUpdateComponent } from './components/entidade/entidade-update/entidade-update.component';
+import { BeneficiarioCreateComponent } from './components/beneficiario/beneficiario-create/beneficiario-create.component';
+import { BeneficiarioListComponent } from './components/beneficiario/beneficiario-list/beneficiario-list.component';
+import { BeneficiarioUpdateComponent } from './components/beneficiario/beneficiario-update/beneficiario-update.component';
 import { DialogDefaultComponent } from './components/dialogs/dialog-default/dialog-default.component';
 import { DialogRemoveComponent } from './components/dialogs/dialog-remove/dialog-remove.component';
 
@@ -49,6 +52,9 @@ import { DialogRemoveComponent } from './components/dialogs/dialog-remove/dialog
     EntidadeCreateComponent,
     EntidadeListComponent,
     EntidadeUpdateComponent,
+    BeneficiarioCreateComponent,
+    BeneficiarioListComponent,
+    BeneficiarioUpdateComponent,    
     DialogDefaultComponent,
     DialogRemoveComponent,
 

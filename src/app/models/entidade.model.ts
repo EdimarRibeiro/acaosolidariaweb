@@ -69,10 +69,12 @@ export class Entidade extends Model {
       let entidade = this.resCreate(entidade_info);
       entidades.push(entidade);
     }
+
     return entidades;
   }
 
   static resCreate(res_entidade){//create entidade instance from a entidade response
+    //Alterado dentro do findById para funcionar
     let entidade = this.findById(res_entidade.identidade);
     if(entidade) return entidade;
     let entidade_info = res_entidade;

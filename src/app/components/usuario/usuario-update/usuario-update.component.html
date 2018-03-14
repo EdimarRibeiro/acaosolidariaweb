@@ -13,7 +13,7 @@
 
     
       <mat-form-field class="full-width">
-        <input formControlName="email" [(ngModel)]="usuario.email" matInput placeholder="Email" name="email">
+        <input formControlName="email" [(ngModel)]="usuario.email" matInput placeholder="Email" name="email" type="email">
         <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('email')}}</mat-error>
       </mat-form-field>

@@ -1,0 +1,22 @@
+<div ngClass.lt-md="mt-50" ngClass.gt-sm="mt-100" fxLayout="row" fxLayoutAlign="center">
+  <mat-card ngClass.lt-md="width-300" ngClass.gt-sm="width-500">
+
+    <div class="center center mat-subheading-1" *ngIf="beneficiarios.length <= 0 || !beneficiarios">
+      Não localizado Beneficiário!
+      <a routerLink="/beneficiario/create" >Novo Beneficiário</a>
+    </div>
+
+    <div class="center center mat-subheading-1" *ngIf="beneficiarios.length > 0">
+      <div>Selecione o Beneficiário para alterar</div>
+      <div *ngFor="let beneficiario of beneficiarios">
+        <br>
+        <button class="center " mat-raised-button (click)="beneficiario.to('update')">{{beneficiario.nome}} - {{beneficiario.telefone}}</button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="end">
+        <a mat-button routerLink="/beneficiario/create" >Novo Beneficiário</a>
+      </div>
+    </div>
+
+  </mat-card>
+</div>
