@@ -2,6 +2,7 @@ import { Model }     from 'browser-model';
 import * as _        from 'underscore';
 import { API }       from './../helpers/api.helper';
 import { Util }      from './../helpers/util.helper';
+import { Usuario }   from './usuario.model';
 
 export class Entidade extends Model {
   apiUpdateValues:Array<string> = ['nome', 'email','cnpj','telef','lougra','numero','compl','cidade','bairro','cep','estado'];//these are the values that will be sent to the API
@@ -54,17 +55,20 @@ export class Entidade extends Model {
 
   static async getAllAuthEntidades(){
     let err, res;
-    [err, res] = await Util.to(Util.get('/v1/entidade'));
+    
+    let login:Usuario = <Usuario> Usuario.findOne({auth:true});
+
+    [err, res] = await Util.to(Util.get('/v1/entidade/'+login.identidade));
     if(err) Util.TE(err.message, true);
     if(!res.success) Util.TE(res.error, true);
-
+    
+    let tmpentidade = [res.entidade];
     let entidades = []
-    for(let i in res.entidades){
-      let entidade_info = res.entidades[i];
+    for(let i in tmpentidade){
+      let entidade_info = tmpentidade[i];
       let entidade = this.resCreate(entidade_info);
       entidades.push(entidade);
     }
-
     return entidades;
   }
 
@@ -72,8 +76,7 @@ export class Entidade extends Model {
     let entidade = this.findById(res_entidade.identidade);
     if(entidade) return entidade;
     let entidade_info = res_entidade;
-    entidade_info.identidade = res_entidade.identidade;
-
+    entidade_info.entidade_info = res_entidade.identidade;
     entidade = this.create(entidade_info);
     return entidade;
   }
@@ -101,5 +104,4 @@ export class Entidade extends Model {
     entidade = this.resCreate(res.entidade);
     return entidade;
   }
-
 }

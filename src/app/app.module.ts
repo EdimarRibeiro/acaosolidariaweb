@@ -3,14 +3,12 @@ import { Injector } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatDialogModule, MatSnackBarModule, MatGridListModule, MatDividerModule, MatCardModule, MatButtonModule, MatSidenavModule, MatCheckboxModule, MatToolbarModule, MatMenuModule, MatIconModule, MatInputModule } from '@angular/material';
-
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { FacebookModule } from 'ngx-facebook';
-
 import { FlexLayoutModule } from "@angular/flex-layout";
+
 //services
 import { UtilService } from './services/util.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -28,6 +26,8 @@ import { FooterComponent } from './components/partials/footer/footer.component';
 import { NavbarComponent } from './components/partials/navbar/navbar.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-list.component';
+import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
+import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { ProfileComponent } from './components/usuario/profile/profile.component';
 import { EntidadeCreateComponent } from './components/entidade/entidade-create/entidade-create.component';
 import { EntidadeListComponent } from './components/entidade/entidade-list/entidade-list.component';
@@ -43,6 +43,8 @@ import { DialogRemoveComponent } from './components/dialogs/dialog-remove/dialog
     NavbarComponent,
     LoginComponent,
     UsuarioListComponent,
+    UsuarioUpdateComponent,
+    UsuarioCreateComponent,
     ProfileComponent,
     EntidadeCreateComponent,
     EntidadeListComponent,

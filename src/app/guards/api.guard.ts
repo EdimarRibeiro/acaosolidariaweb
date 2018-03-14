@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate} from '@angular/router';
-import { Usuario }       from './../models/usuario.model';
-import { Util } from './../helpers/util.helper';
+import { Usuario }    from './../models/usuario.model';
+import { Util }       from './../helpers/util.helper';
 
 @Injectable()
 export class ApiGuard implements CanActivate {

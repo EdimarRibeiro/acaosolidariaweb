@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Util } from '../../../helpers/util.helper';
 import { Usuario } from '../../../models/usuario.model';
-import {Entidade} from "../../../models/entidade.model";
+import { Entidade } from "../../../models/entidade.model";
 
 export interface NavLinks {
   route?: string;
@@ -20,15 +20,15 @@ export class NavbarComponent implements OnInit {
   usuario: Usuario;
   env;
   nav_links_usuario: Array<NavLinks> = [
-    {route: 'usuario/list', name: 'Beneficiário'},
-    {route: 'coleta/list' , name: 'Coleta'},
+    {route: 'beneficiario/list', name: 'Beneficiário'},
+    {route: 'coleta/list'   , name: 'Coleta'},
     {route: 'produto/list'  , name: 'Produto'},
     {route: 'usuario/list'  , name: 'Usuário'},    
-    {route: 'entidade/list'   , name: 'Entidades'}
+    {route: 'entidade/list' , name: 'Entidade'}
   ];
   nav_links_no_usuario: Array<NavLinks> = [
-    {route: 'home', name: 'Ação Solidária'},
-    {route: 'login', name: 'Logar'},
+    {route: 'home'    , name: 'Ação Solidária'},
+    {route: 'login'   , name: 'Logar'},
     {route: 'register', name: 'Registar'}
   ];
 

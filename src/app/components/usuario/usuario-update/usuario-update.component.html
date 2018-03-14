@@ -1,0 +1,32 @@
+
+<div ngClass.lt-md="mt-50" ngClass.gt-sm="mt-100" fxLayout="row" fxLayoutAlign="center">
+  <mat-card ngClass.lt-md="width-300" ngClass.gt-sm="width-500">
+
+    <div fxLayout="row" fxLayoutAlign="center" class="mat-display-1">Alterando {{usuario.nome}}!</div>
+    <form (ngSubmit)="onSubmit()"  [formGroup]="usuarioForm">
+
+      <mat-form-field class="full-width">
+        <input formControlName="nome" [(ngModel)]="usuario.nome" matInput placeholder="Nome" name="nome">
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+        <mat-error>{{getInputErrorMessage('nome')}}</mat-error>
+      </mat-form-field>
+
+    
+      <mat-form-field class="full-width">
+        <input formControlName="email" [(ngModel)]="usuario.email" matInput placeholder="Email" name="email">
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+        <mat-error>{{getInputErrorMessage('email')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input formControlName="senha" [(ngModel)]="usuario.senha" matInput placeholder="Senha" name="senha" type="password">
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+        <mat-error>{{getInputErrorMessage('senha')}}</mat-error>
+      </mat-form-field>      
+
+      <div fxLayout="row" fxLayoutAlign="center center" >
+        <button mat-raised-button [disabled]="!usuarioForm.valid">Salvar</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,11 +1,11 @@
 import { Model }            from 'browser-model';
 import * as _               from 'underscore';
+import { API }              from './../helpers/api.helper';
+import { Util }             from './../helpers/util.helper';
 import { LoginOptions }     from 'ngx-facebook';
 import * as jwt_decode      from 'jwt-decode';
 //interfaces
 import { LoginInfo }        from './../interfaces/login-info';
-import { API }              from './../helpers/api.helper';
-import { Util }             from './../helpers/util.helper';
 
 export class Usuario extends Model {
   apiUpdateValues:Array<string> = ['nome', 'email', 'senha'];//these are the values that will be sent to the API
@@ -38,14 +38,17 @@ export class Usuario extends Model {
     Util.route('/home');
     this.emit(['logout', 'auth'], 'logout', true);
   }
-
-  async saveAPI(){
-    console.log(this);
-    return API.save(this, '/v1/usuario');
+ 
+  to(action){
+    return Util.route('/usuario/'+action+'/'+this.identidade+'/'+this.idusuario);
   }
 
-  to(action){
-    return Util.route('/usuario/'+action);
+  async saveAPI(){
+    return API.save(this, '/v1/usuario/'+this.idusuario);
+  }
+
+  async removeAPI(){
+    return API.remove(this, '/v1/usuario/'+this.idusuario);
   }
 
   parseToken(){
@@ -55,7 +58,9 @@ export class Usuario extends Model {
   //************************************
   //********* STATIC METHODS ***********
   //************************************
-
+  static to(action){
+    return Util.route('/usuario/'+action);
+  }
 
   static get fb(){
     // return Util.fb;
@@ -114,6 +119,9 @@ export class Usuario extends Model {
 
   static async CreateAccount(data:any){
     let err, res:any;
+    let login:Usuario = <Usuario> this.findOne({auth:true});
+    data.identidade = login.identidade;
+
     [err, res] = await Util.to(Util.post('/v1/usuario', data));
 
     if(err) Util.TE(err, true);
@@ -124,7 +132,8 @@ export class Usuario extends Model {
       usuario: res.usuario,
     };
 
-    let usuario = this.Login(login_info);
+    //let usuario = this.Login(login_info);
+    let usuario = this.resCreate(res.usuario);; 
     return usuario;
   }
 
@@ -139,13 +148,37 @@ export class Usuario extends Model {
 
     let usuarios = []
     for(let i in res.usuario){
-
       let usuario_info = res.usuario[i];
-      let usuario = <Usuario>usuario_info;
+      let usuario = this.resCreate(usuario_info);
+
       usuarios.push(usuario);
     }
 
     return usuarios;
+  }
+
+  static async getById(idusuario:string,identidade:string){
+    let usuario = this.findById(idusuario);
+    if(usuario) return usuario;
+
+    let err, res; //get from API
+    [err, res] = await Util.to(Util.get('/v1/usuario/'+identidade+'/'+idusuario));
+    if(err) Util.TE(err.message, true);
+    if(!res.success) Util.TE(res.error, true);
+
+    let usuario_info = res.usuario;
+    usuario = this.resCreate(usuario_info);    
+    return usuario;
+  }
+
+  static resCreate(res_usuario){//create usuario instance from a usuario response
+    let usuario = this.findById(res_usuario.idusuario);
+    if(usuario) return usuario;
+    let usuario_info = res_usuario;
+    usuario_info.idusuario = res_usuario.idusuario;
+
+    usuario = this.create(usuario_info);
+    return usuario;
   }
 
   // static async LoginSocial(service: String){
