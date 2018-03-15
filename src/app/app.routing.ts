@@ -17,6 +17,10 @@ import { EntidadeUpdateComponent } from './components/entidade/entidade-update/e
 import { BeneficiarioCreateComponent } from './components/beneficiario/beneficiario-create/beneficiario-create.component';
 import { BeneficiarioListComponent } from './components/beneficiario/beneficiario-list/beneficiario-list.component';
 import { BeneficiarioUpdateComponent } from './components/beneficiario/beneficiario-update/beneficiario-update.component';
+//Produto
+import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
+import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
+import { ProdutoUpdateComponent } from './components/produto/produto-update/produto-update.component';
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -34,6 +38,10 @@ const APP_ROUTES: Routes = [
   { path: 'beneficiario/create',     component: BeneficiarioCreateComponent, canActivate:[ApiGuard], pathMatch: 'full' },
   { path: 'beneficiario/list',       component: BeneficiarioListComponent,   canActivate:[ApiGuard], pathMatch: 'full' },
   { path: 'beneficiario/update/:idbeneficiario', component: BeneficiarioUpdateComponent, canActivate:[ApiGuard], pathMatch: 'full' },  
+  
+  { path: 'produto/create',     component: ProdutoCreateComponent, canActivate:[ApiGuard], pathMatch: 'full' },
+  { path: 'produto/list',       component: ProdutoListComponent,   canActivate:[ApiGuard], pathMatch: 'full' },
+  { path: 'produto/update/:idproduto', component: ProdutoUpdateComponent, canActivate:[ApiGuard], pathMatch: 'full' },  
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

@@ -35,6 +35,9 @@ import { EntidadeUpdateComponent } from './components/entidade/entidade-update/e
 import { BeneficiarioCreateComponent } from './components/beneficiario/beneficiario-create/beneficiario-create.component';
 import { BeneficiarioListComponent } from './components/beneficiario/beneficiario-list/beneficiario-list.component';
 import { BeneficiarioUpdateComponent } from './components/beneficiario/beneficiario-update/beneficiario-update.component';
+import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
+import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
+import { ProdutoUpdateComponent } from './components/produto/produto-update/produto-update.component';
 import { DialogDefaultComponent } from './components/dialogs/dialog-default/dialog-default.component';
 import { DialogRemoveComponent } from './components/dialogs/dialog-remove/dialog-remove.component';
 
@@ -54,7 +57,10 @@ import { DialogRemoveComponent } from './components/dialogs/dialog-remove/dialog
     EntidadeUpdateComponent,
     BeneficiarioCreateComponent,
     BeneficiarioListComponent,
-    BeneficiarioUpdateComponent,    
+    BeneficiarioUpdateComponent,   
+    ProdutoCreateComponent,
+    ProdutoListComponent,
+    ProdutoUpdateComponent,   
     DialogDefaultComponent,
     DialogRemoveComponent,
 

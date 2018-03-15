@@ -1,0 +1,30 @@
+<div ngClass.lt-md="mt-50" ngClass.gt-sm="mt-100" fxLayout="row" fxLayoutAlign="center">
+  <mat-card ngClass.lt-md="width-000" ngClass.gt-sm="width-000"> <!---->
+
+    <div fxLayout="row" fxLayoutAlign="begin">
+      <a class="glyphicon glyphicon-plus btn btn-primary" routerLink="/produto/create" > </a>
+    </div>
+
+    <div class="center center mat-subheading-1" *ngIf="produtos.length > 0">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Alterar</th>
+            </tr>
+          </thead>
+          <tbody>  
+            <tr *ngFor="let produto of produtos">
+              <td>{{produto.idproduto}}</td>
+              <td>{{produto.nome}}</td>
+              <td><a class="glyphicon glyphicon-edit btn btn-warning btn-sm" (click)="produto.to('update')"> </a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>          
+    </div>
+
+  </mat-card>
+</div>

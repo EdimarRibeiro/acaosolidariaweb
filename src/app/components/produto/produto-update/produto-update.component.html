@@ -1,0 +1,20 @@
+<div ngClass.lt-md="mt-50" ngClass.gt-sm="mt-100" fxLayout="row" fxLayoutAlign="center">
+  <mat-card ngClass.lt-md="width-000" ngClass.gt-sm="width-000">
+   
+    <form (ngSubmit)="onSubmit()"  [formGroup]="produtoForm">
+      <mat-form-field class="full-width">
+        <input formControlName="nome" [(ngModel)]="produto.nome" matInput placeholder="Nome" name="nome">
+        <mat-error>{{getInputErrorMessage('nome')}}</mat-error>
+      </mat-form-field>
+
+      <div fxLayout="row" fxLayoutAlign="center center" >
+        <button class="glyphicon glyphicon-list-alt btn btn-success btn-sm" [disabled]="!produtoForm.valid"> Salvar</button>
+      </div>
+    </form>
+    <form (ngSubmit)="onCancel()"  [formGroup]="produtoForm">
+      <div fxLayout="row" fxLayoutAlign="center center" >
+        <button class="glyphicon glyphicon-share-alt btn btn-warning btn-sm"> Voltar</button>
+      </div>
+    </form>    
+  </mat-card>
+</div>

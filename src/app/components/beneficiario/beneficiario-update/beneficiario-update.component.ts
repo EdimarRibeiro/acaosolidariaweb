@@ -65,8 +65,13 @@ export class BeneficiarioUpdateComponent implements OnInit {
   async ngOnInit() {
     this.url_params = await Util.getUrlParams(this.aRoute);
     this.beneficiario = await Beneficiario.getById(this.url_params.idbeneficiario);
+    this.beneficiario.datanasc = this.beneficiario.datanasc.substr(0, 10);
   }
 
+  async onCancel(){
+    Beneficiario.to('list')
+  }
+  
   async onSubmit(){
     let err, res;
     [err, res] = await Util.to(this.beneficiario.saveAPI());

@@ -56,11 +56,12 @@ export class Beneficiario extends Model {
     [err, res] = await Util.to(Util.get('/v1/entidadebeneficiario/'+login.identidade));
     if(err) Util.TE(err.message, true);
     if(!res.success) Util.TE(res.error, true);
-    
-    let tmpbeneficiario = [res.beneficiario];
+        
+    let tmpbeneficiarios = res.entidadebeneficiarios;
     let beneficiarios = []
-    for(let i in tmpbeneficiario){
-      let beneficiario_info = tmpbeneficiario[i];
+    for(let i in tmpbeneficiarios){
+      [err, res] = await Util.to(Util.get('/v1/beneficiario/'+ tmpbeneficiarios[i].idbeneficiario));
+      let beneficiario_info = res.beneficiario;
       let beneficiario = this.resCreate(beneficiario_info);
       beneficiarios.push(beneficiario);
     }

@@ -76,7 +76,11 @@ export class BeneficiarioCreateComponent implements OnInit {
     this.beneficiarioForm.get(input_name).setErrors({custom: message});
   }
 
-  ngOnInit() {
+  ngOnInit() {  
+  }
+
+  async onCancel(){
+    Beneficiario.to('list')
   }
 
   async onSubmit(){

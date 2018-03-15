@@ -1,85 +1,74 @@
 <div ngClass.lt-md="mt-50" ngClass.gt-sm="mt-100" fxLayout="row" fxLayoutAlign="center">
-  <mat-card ngClass.lt-md="width-300" ngClass.gt-sm="width-500">
+  <mat-card ngClass.lt-md="width-000" ngClass.gt-sm="width-000">
 
-    <div fxLayout="row" fxLayoutAlign="center" class="mat-display-1">Nova Entidade</div>
+    <!--<div fxLayout="row" fxLayoutAlign="center" class="mat-display-1">Novo Beneficiário</div>-->
     <form (ngSubmit)="onSubmit()"  [formGroup]="beneficiarioForm">
 
       <mat-form-field class="full-width">
         <input formControlName="nome" [(ngModel)]="beneficiario_info.nome" matInput placeholder="Nome" name="nome">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('nome')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
         <input formControlName="cpf" [(ngModel)]="beneficiario_info.cpf" matInput  matInput maxlength="11" placeholder="CPF" name="cpf">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('cpf')}}</mat-error>
       </mat-form-field>      
 
-
       <mat-form-field class="full-width">
         <input formControlName="telef" [(ngModel)]="beneficiario_info.telef" matInput maxlength="9" matInput placeholder="Telefone" name="telef">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
-        <!--<mat-error>{{getInputErrorMessage('phone')}}</mat-error>-->
       </mat-form-field>
 
       <mat-form-field class="full-width">
         <input formControlName="lougra" [(ngModel)]="beneficiario_info.lougra" matInput placeholder="Endereço" name="lougra">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('lougra')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
         <input formControlName="numero" [(ngModel)]="beneficiario_info.numero" matInput placeholder="Número" name="numero">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('numero')}}</mat-error>
       </mat-form-field>   
       
       <mat-form-field class="full-width">
         <input formControlName="compl" [(ngModel)]="beneficiario_info.compl" matInput placeholder="Complemento" name="compl">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
-        <!--<mat-error>{{getInputErrorMessage('numero')}}</mat-error>-->
-      </mat-form-field>      
-      
+      </mat-form-field>   
 
       <mat-form-field class="full-width">
         <input formControlName="bairro" [(ngModel)]="beneficiario_info.bairro" matInput placeholder="Bairro" name="bairro">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('bairro')}}</mat-error>
       </mat-form-field>      
 
       <mat-form-field class="full-width">
         <input formControlName="cidade" [(ngModel)]="beneficiario_info.cidade" matInput placeholder="Cidade" name="cidade">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('cidade')}}</mat-error>
       </mat-form-field>     
 
       <mat-form-field class="full-width">
         <input formControlName="estado" [(ngModel)]="beneficiario_info.estado" maxlength="2" matInput placeholder="Estado" name="estado">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('estado')}}</mat-error>
       </mat-form-field>     
 
       <mat-form-field class="full-width">
         <input formControlName="cep" [(ngModel)]="beneficiario_info.cep" matInput maxlength="8" placeholder="CEP" name="cep">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('cep')}}</mat-error>
       </mat-form-field>           
 
       <mat-form-field class="full-width">
         <input formControlName="email" [(ngModel)]="beneficiario_info.email" matInput placeholder="Email" type="email" name="email">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('email')}}</mat-error>
-
-
+      </mat-form-field>
+      
       <mat-form-field class="full-width">
         <input formControlName="datanasc" [(ngModel)]="beneficiario_info.datanasc" matInput placeholder="Data de Nascimento" type="date" name="datanasc">
-        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
         <mat-error>{{getInputErrorMessage('datanasc')}}</mat-error>        
       </mat-form-field>
 
       <div fxLayout="row" fxLayoutAlign="center center" >
-        <button mat-raised-button [disabled]="!beneficiarioForm.valid">Salvar</button>
+        <button class="glyphicon glyphicon-list-alt btn btn-success btn-sm" [disabled]="!beneficiarioForm.valid"> Salvar</button>
+      </div>
+    </form>
+    <form (ngSubmit)="onCancel()"  [formGroup]="beneficiarioForm">
+      <div fxLayout="row" fxLayoutAlign="center center" >
+        <button class="glyphicon glyphicon-share-alt btn btn-warning btn-sm"> Voltar</button>
       </div>
     </form>
   </mat-card>
